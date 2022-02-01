@@ -30,6 +30,8 @@ create table artistas_musica(
 	nome_artista varchar(50)
 );
 
+drop table artistas_musica;
+
 create table musica(
 	id_musica serial primary key,
 	titulo varchar(50),
@@ -38,6 +40,11 @@ create table musica(
 	id_album integer references album(id_album),
 	id_artista_musicas integer references artistas_musica(id_artistas_musicas)
 );
+
+alter table musica drop column id_artista_musicas;
+alter table musica add column id_artista integer; 
+alter table musica add constraint fk_id_artista foreign key(id_artista)
+references artista(id_artista);
 
 create table podcaster(
 	id_podcaster serial primary key,
@@ -53,6 +60,7 @@ create table podcast(
 	id_podcaster integer references podcaster(id_podcaster)
 );
 
+alter table podcast drop column id_episodio; 
 alter table podcast add constraint fk_id_episodio
 foreign key(id_episodio) references episodio(id_episodio);
 
