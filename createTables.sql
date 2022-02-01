@@ -65,12 +65,17 @@ create table episodio(
 	id_podcast integer references podcast(id_podcast)
 );
 
+alter table episodio rename column lancando_em to lancado_em;
+alter table episodio alter column lancado_em type timestamp;
+
 create table audio_playlist(
 	id_playlist serial primary key,
 	adicionado_em date,
 	id_musica integer references musica(id_musica),
 	id_episodio integer references episodio(id_episodio)
 );
+
+alter table audio_playlist alter column adicionado_em type timestamp;
 
 create table playlist(
 	id_playlist serial primary key,
