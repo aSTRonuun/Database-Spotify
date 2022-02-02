@@ -4,6 +4,10 @@ create table turne(
 	descricao varchar(100)
 );
 
+alter table turne add column id_artista integer;
+alter table turne add constraint fk_id_artista foreign key(id_artista)
+references artista(id_artista);
+
 create table artista(
 	id_artista serial primary key,
 	sobre varchar(100),
@@ -11,6 +15,8 @@ create table artista(
 	nome varchar(50),
 	qtd_ouvintes integer
 )
+
+alter table artista drop column id_turne;
 
 create table album(
 	id_album serial primary key,
@@ -24,6 +30,7 @@ create table album(
 alter table album add id_musica integer;
 alter table album add constraint fk_id_musica foreign key(id_musica)
 references musica(id_musica);
+alter table album drop column id_musica;
 
 create table artistas_musica(
 	id_artistas_musicas serial primary key,
@@ -83,6 +90,11 @@ create table audio_playlist(
 	id_episodio integer references episodio(id_episodio)
 );
 
+alter table audio_playlist rename column id_playlist to id_audio_playlist;
+alter table audio_playlist add primary key(id_audio_playlist);
+alter table audio_playlist add column id_playlist integer;
+alter table audio_playlist add constraint fk_id_playlist 
+foreign key(id_playlist) references playlist(id_playlist);
 alter table audio_playlist alter column adicionado_em type timestamp;
 
 create table playlist(
