@@ -4,6 +4,10 @@ create table turne(
 	descricao varchar(100)
 );
 
+alter table turne add column id_artista integer;
+alter table turne add constraint fk_id_artista foreign key(id_artista)
+references artista(id_artista);
+
 create table artista(
 	id_artista serial primary key,
 	sobre varchar(100),
@@ -11,6 +15,8 @@ create table artista(
 	nome varchar(50),
 	qtd_ouvintes integer
 )
+
+alter table artista drop column id_turne;
 
 create table album(
 	id_album serial primary key,
