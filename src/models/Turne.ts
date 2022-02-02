@@ -1,10 +1,12 @@
 export class Turne {
     private data: string;
     private descricao: string;
+    private readonly idArtista: number;
 
-    constructor(data: string, descricao: string) {
+    constructor(data: string, descricao: string, idArtista: number) {
         this.data = data;
         this.descricao = descricao;
+        this.idArtista = idArtista;
     }
 
     public getData(): string {
@@ -21,5 +23,9 @@ export class Turne {
 
     public setDescricao(descricao: string): void {
         this.descricao = descricao;
+    }
+
+    public getIdArtista(): number {
+        return this.idArtista;
     }
 }

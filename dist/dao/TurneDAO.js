@@ -10,14 +10,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TurneDAO = void 0;
+const Turne_1 = require("../models/Turne");
 const database_1 = require("../database");
 class TurneDAO {
     handleCreate(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { data, descricao } = req.body;
-            const response = yield database_1.pool.query("INSERT INTO Turne (data, descricao) VALUES ($1, $2)", [data, descricao]);
+            const { data, descricao, idArtista } = req.body;
+            const turne = new Turne_1.Turne(data, descricao, idArtista);
+            console.log(turne);
+            const response = yield database_1.pool.query("INSERT INTO Turne (data, descricao, id_artista) VALUES ($1, $2, $3)", [turne.getData(), turne.getDescricao(), turne.getIdArtista()]);
             res.json({
                 message: "Turne created successfully",
+                turne: {
+                    data,
+                    descricao,
+                    idArtista
+                }
+            });
+        });
+    }
+    handleUpdate(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idTurne, data, descricao } = req.body;
+            const turneOld = yield database_1.pool.query("SELECT * FROM Turne WHERE id_turne = $1", [idTurne]);
+            const turne = new Turne_1.Turne(data, descricao, turneOld.rows[0].idArtista);
+            turne.setData(data ? data : turneOld.rows[0].data);
+            turne.setDescricao(descricao ? descricao : turneOld.rows[0].descricao);
+            console.log(turne);
+            const response = yield database_1.pool.query("UPDATE Turne SET data = $1, descricao = $2 WHERE id_turne = $3", [turne.getData(), turne.getDescricao(), idTurne]);
+            res.json({
+                message: "Turne updated successfully",
                 turne: {
                     data,
                     descricao
@@ -25,17 +47,21 @@ class TurneDAO {
             });
         });
     }
-    update(id, new_turne) {
-        throw new Error("Method not implemented.");
+    handleDelete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idTurne } = req.body;
+            const response = yield database_1.pool.query("DELETE FROM Turne WHERE id_turne = $1", [idTurne]);
+            res.json({
+                message: "Turne deleted successfully",
+            });
+        });
     }
-    delete(id) {
-        throw new Error("Method not implemented.");
-    }
-    getTurne(id) {
-        throw new Error("Method not implemented.");
-    }
-    getAllTurnes() {
-        throw new Error("Method not implemented.");
+    getAllTurnesByArtista(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idArtista } = req.body;
+            const response = yield database_1.pool.query("SELECT * FROM Turne WHERE id_artista = $1", [idArtista]);
+            return res.status(200).json(response.rows);
+        });
     }
 }
 exports.TurneDAO = TurneDAO;

@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const ArtistaDAO_1 = require("../dao/ArtistaDAO");
+const TurneDAO_1 = require("../dao/TurneDAO");
 const router = (0, express_1.Router)();
-router.get("/test", (req, res) => res.send("Hello World!"));
+router.post("/turne", new TurneDAO_1.TurneDAO().handleCreate);
+router.put("/turne", new TurneDAO_1.TurneDAO().handleUpdate);
+router.delete("/turne", new TurneDAO_1.TurneDAO().handleDelete);
+router.get("/turne/artista", new TurneDAO_1.TurneDAO().getAllTurnesByArtista);
+router.post("/artista", new ArtistaDAO_1.ArtistaDAO().handleCreate);
 exports.default = router;
