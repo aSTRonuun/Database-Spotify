@@ -90,6 +90,8 @@ create table audio_playlist(
 	id_episodio integer references episodio(id_episodio)
 );
 
+alter table audio_playlist rename column id_playlist to id_audio_playlist;
+alter table audio_playlist add primary key(id_audio_playlist);
 alter table audio_playlist alter column adicionado_em type timestamp;
 
 create table playlist(
