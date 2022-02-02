@@ -30,6 +30,7 @@ create table album(
 alter table album add id_musica integer;
 alter table album add constraint fk_id_musica foreign key(id_musica)
 references musica(id_musica);
+alter table album drop column id_musica;
 
 create table artistas_musica(
 	id_artistas_musicas serial primary key,
