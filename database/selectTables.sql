@@ -21,5 +21,6 @@ from biblioteca
 inner join playlist on biblioteca.id_biblioteca = playlist.id_biblioteca
 inner join audio_playlist on audio_playlist.id_playlist = playlist.id_playlist
 inner join musica on musica.id_musica = audio_playlist.id_musica
+where playlist.id_playlist = 1
 group by musica.genero
 having avg(musica.duracao) > 3;
