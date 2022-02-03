@@ -18,6 +18,10 @@ create table artista(
 
 alter table artista drop column id_turne;
 
+alter table artista add column id_biblioteca integer;
+alter table artista add constraint fk_id_biblioteca 
+foreign key(id_biblioteca) references biblioteca(id_biblioteca);
+
 create table album(
 	id_album serial primary key,
 	qtd_musica serial,
@@ -31,6 +35,10 @@ alter table album add id_musica integer;
 alter table album add constraint fk_id_musica foreign key(id_musica)
 references musica(id_musica);
 alter table album drop column id_musica;
+
+alter table album add column id_biblioteca integer;
+alter table album add constraint fk_id_biblioteca 
+foreign key(id_biblioteca) references biblioteca(id_biblioteca);
 
 create table artistas_musica(
 	id_artistas_musicas serial primary key,
@@ -71,6 +79,10 @@ alter table podcast drop column id_episodio;
 alter table podcast add constraint fk_id_episodio
 foreign key(id_episodio) references episodio(id_episodio);
 
+alter table podcast add column id_biblioteca integer;
+alter table podcast add constraint fk_id_biblioteca 
+foreign key(id_biblioteca) references biblioteca(id_biblioteca);
+
 create table episodio(
 	id_episodio serial primary key,
 	descricao varchar(150),
@@ -107,6 +119,10 @@ create table playlist(
 	id_audio_playlist integer references audio_playlist(id_playlist)
 );
 
+alter table playlist add column id_biblioteca integer;
+alter table playlist add constraint fk_id_biblioteca 
+foreign key(id_biblioteca) references biblioteca(id_biblioteca);
+
 create table biblioteca(
 	id_biblioteca serial primary key,
 	qtd_podcasts integer,
@@ -117,6 +133,9 @@ create table biblioteca(
 	id_podcast integer references podcast(id_podcast),
 	id_artistas integer references artista(id_artista)
 );
+
+alter table biblioteca drop column id_album, drop column id_playlist, 
+drop column id_podcast, drop column id_artistas;
 
 create table ouvintes(
 	id_user serial primary key,
