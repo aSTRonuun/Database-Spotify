@@ -1,7 +1,7 @@
 export class Turne {
     private data: string;
     private descricao: string;
-    private readonly idArtista: number;
+    private idArtista: number;
 
     constructor(data: string, descricao: string, idArtista: number) {
         this.data = data;

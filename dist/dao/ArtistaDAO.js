@@ -28,5 +28,54 @@ class ArtistaDAO {
             });
         });
     }
+    handleRead(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const response = yield database_1.pool.query("SELECT * FROM Artista WHERE id_artista = $1", [id]);
+            if (response.rowCount > 0) {
+                return resp.status(200).json(response.rows);
+            }
+            else {
+                return resp.status(404).json({
+                    message: "Artista not found"
+                });
+            }
+        });
+    }
+    handleUpdate(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const { nome, sobre } = req.body;
+            const artistaOld = yield database_1.pool.query("SELECT * FROM Artista WHERE id_artista = $1", [id]);
+            const artista = new Artista_1.Artista(artistaOld.rows[0].sobre, artistaOld.rows[0].nome);
+            artista.setNome(nome ? nome : artistaOld.rows[0].nome);
+            artista.setSobre(sobre ? sobre : artistaOld.rows[0].sobre);
+            console.log(artista);
+            const response = yield database_1.pool.query("UPDATE Artista SET nome = $1, sobre = $2 WHERE id_artista = $3", [artista.getNome(), artista.getSobre(), id]);
+            resp.json({
+                message: "Artista updated successfully",
+                artista: {
+                    nome,
+                    sobre
+                }
+            });
+        });
+    }
+    handleDelete(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { idArtista } = req.params;
+            const response = yield database_1.pool.query("DELETE FROM Artista WHERE id_artista = $1", [idArtista]);
+            if (response.rowCount > 0) {
+                resp.json({
+                    message: "Artista deleted successfully",
+                });
+            }
+            else {
+                resp.json({
+                    message: "Artista not found",
+                });
+            }
+        });
+    }
 }
 exports.ArtistaDAO = ArtistaDAO;
