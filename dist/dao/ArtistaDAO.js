@@ -77,5 +77,26 @@ class ArtistaDAO {
             }
         });
     }
+    getAllArtitsByMusicGenre(req, resp) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { genero } = req.params;
+            const response = yield database_1.pool.query(`SELECT A.nome
+                FROM Artista as A
+                WHERE exists (
+                    SELECT *
+                    FROM Album as AL, Musica as M
+                    WHERE A.id_artista = AL.id_artista and AL.id_album = M.id_album and M.genero = $1
+                )
+            `, [genero]);
+            if (response.rowCount > 0) {
+                return resp.status(200).json(response.rows);
+            }
+            else {
+                return resp.status(404).json({
+                    message: "Nenhum artista encontrado com esse gênero"
+                });
+            }
+        });
+    }
 }
 exports.ArtistaDAO = ArtistaDAO;

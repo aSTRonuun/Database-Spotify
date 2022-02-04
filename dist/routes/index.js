@@ -12,4 +12,5 @@ router.post("/artista", new ArtistaDAO_1.ArtistaDAO().handleCreate);
 router.get("/artista/:id", new ArtistaDAO_1.ArtistaDAO().handleRead);
 router.put("/artista/:id", new ArtistaDAO_1.ArtistaDAO().handleUpdate);
 router.delete("/artista/:id", new ArtistaDAO_1.ArtistaDAO().handleDelete);
+router.get("/artista/nome/:genero", new ArtistaDAO_1.ArtistaDAO().getAllArtitsByMusicGenre);
 exports.default = router;

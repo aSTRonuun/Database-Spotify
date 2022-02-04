@@ -21,6 +21,8 @@ router.put("/artista/:id", new ArtistaDAO().handleUpdate);
 
 router.delete("/artista/:id", new ArtistaDAO().handleDelete);
 
+router.get("/artista/nome/:genero", new ArtistaDAO().getAllArtitsByMusicGenre);
+
 
 
 export default router;

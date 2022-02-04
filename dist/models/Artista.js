@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Artista = void 0;
 class Artista {
-    constructor(sobre, nome) {
+    constructor(nome, sobre) {
         this.sobre = sobre;
         this.nome = nome;
         this.qtd_ouvintes = 0;
