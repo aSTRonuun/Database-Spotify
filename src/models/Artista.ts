@@ -5,7 +5,7 @@ export class Artista {
     private nome: string;
     private qtd_ouvintes: number;
 
-    constructor(sobre: string, nome: string) {
+    constructor(nome: string, sobre: string) {
         this.sobre = sobre;
         this.nome = nome;
         this.qtd_ouvintes = 0;

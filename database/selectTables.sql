@@ -24,3 +24,12 @@ inner join musica on musica.id_musica = audio_playlist.id_musica
 where playlist.id_playlist = 1
 group by musica.genero
 having avg(musica.duracao) > 3;
+
+// Buscar por nomes artistas com musicas de um determinado genero
+SELECT A.nome
+FROM Artista as A
+WHERE exists (
+	SELECT *
+	FROM Album as Al, Musica as M
+	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'pop'
+)
