@@ -28,7 +28,7 @@ foreign key(id_biblioteca) references biblioteca(id_biblioteca);
 
 create table album(
 	id_album serial primary key,
-	qtd_musica serial,
+	qtd_musica integer,
 	titulo varchar(50),
 	duracao_total numeric,
 	descricao varchar(100),
