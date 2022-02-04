@@ -9,8 +9,7 @@ create table artista(
 	id_artista serial primary key,
 	sobre varchar(100),
 	nome varchar(50),
-	qtd_ouvintes integer,
-	id_biblioteca integer
+	qtd_ouvintes integer
 );
 
 alter table turne add constraint fk_id_artista 
@@ -20,20 +19,17 @@ create table biblioteca(
 	id_biblioteca serial primary key,
 	qtd_podcasts integer,
 	qtd_playlist integer,
-	qtd_albuns integer
+	qtd_albuns integer,
+	id_user integer
 );
-
-alter table artista add constraint fk_id_biblioteca 
-foreign key(id_biblioteca) references biblioteca(id_biblioteca);
 
 create table album(
 	id_album serial primary key,
-	qtd_musica serial,
+	qtd_musica integer,
 	titulo varchar(50),
 	duracao_total numeric,
 	descricao varchar(100),
-	id_artista integer references artista(id_artista),
-	id_biblioteca integer references biblioteca(id_biblioteca)
+	id_artista integer references artista(id_artista)
 );
 
 create table musica(
@@ -41,8 +37,7 @@ create table musica(
 	titulo varchar(50),
 	duracao numeric,
 	genero varchar(20),
-	id_album integer references album(id_album),
-	id_artista integer references artista(id_artista)
+	id_album integer references album(id_album)
 );
 
 create table playlist(
@@ -51,8 +46,7 @@ create table playlist(
 	autor varchar(50),
 	duracao_total numeric,
 	curtidas integer,
-	qtd_musicas integer,
-	id_biblioteca integer references biblioteca(id_biblioteca)
+	qtd_musicas integer
 );
 
 create table audio_playlist(
@@ -73,7 +67,6 @@ create table podcast(
 	id_podcast serial primary key,
 	descricao varchar(150),
 	titulo varchar(50),
-	id_biblioteca integer references biblioteca(id_biblioteca),
 	id_podcaster integer references podcaster(id_podcaster)
 );
 
@@ -97,5 +90,32 @@ create table ouvinte(
 	senha varchar(50),
 	data_nasc date,
 	pais varchar(50),
+	id_biblioteca integer references biblioteca(id_biblioteca)
+);
+
+alter table biblioteca add constraint fk_id_user
+foreign key(id_user) references ouvinte(id_user);
+
+create table biblioteca_playlist(
+	id_biblioteca_playlist integer primary key,
+	id_playlist integer references playlist(id_playlist),
+	id_biblioteca integer references biblioteca(id_biblioteca)
+);
+
+create table biblioteca_podcast(
+	id_biblioteca_podcast integer primary key,
+	id_podcast integer references podcast(id_podcast),
+	id_biblioteca integer references biblioteca(id_biblioteca)
+);
+
+create table biblioteca_album(
+	id_biblioteca_album integer primary key,
+	id_album integer references album(id_album),
+	id_biblioteca integer references biblioteca(id_biblioteca)
+);
+
+create table biblioteca_artista(
+	id_biblioteca_artista integer primary key,
+	id_artista integer references artista(id_artista),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
