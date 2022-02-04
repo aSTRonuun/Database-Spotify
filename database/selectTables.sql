@@ -15,7 +15,7 @@ select * from ouvinte;
 select * from playlist;
 select * from audio_playlist;
 
-
+/* Buscar por músicas em uma playlist da biblioteca, separando elas por gênero */
 select musica.genero, count(musica), trunc(avg(musica.duracao), 2)
 from biblioteca 
 inner join playlist on biblioteca.id_biblioteca = playlist.id_biblioteca
@@ -25,7 +25,7 @@ where playlist.id_playlist = 1
 group by musica.genero
 having avg(musica.duracao) > 3;
 
-// Buscar por nomes artistas com musicas de um determinado genero
+/*  Buscar por nomes artistas com musicas de um determinado genero */
 SELECT A.nome
 FROM Artista as A
 WHERE exists (
@@ -33,3 +33,14 @@ WHERE exists (
 	FROM Album as Al, Musica as M
 	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'pop'
 )
+
+/*  Buscar por nomes artistas com turnes depois de certa data, e com uma restrição de ouvintes */
+select * from artista as a
+full outer join turne as t on a.id_artista = t.id_artista
+where exists(
+	select data from turne 
+	where data > '25-03-2022'
+) and a.qtd_ouvintes >= any(
+	select qtd_ouvintes from artista
+	where qtd_ouvintes > 0 and qtd_ouvintes < 200
+);
