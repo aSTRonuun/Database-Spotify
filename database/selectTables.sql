@@ -34,7 +34,7 @@ WHERE exists (
 	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'pop'
 )
 
-/*  Buscar por nomes artistas com turnes depois de certa data, e com uma restrição de ouvintes */
+/*  Buscar por informações de artistas com turnes depois de certa data, e com uma restrição de ouvintes */
 select * from artista as a
 full outer join turne as t on a.id_artista = t.id_artista
 where exists(
