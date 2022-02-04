@@ -37,8 +37,7 @@ create table musica(
 	titulo varchar(50),
 	duracao numeric,
 	genero varchar(20),
-	id_album integer references album(id_album),
-	id_artista integer references artista(id_artista)
+	id_album integer references album(id_album)
 );
 
 create table playlist(
