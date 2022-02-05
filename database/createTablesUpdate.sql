@@ -89,8 +89,6 @@ create table ouvinte(
 	tipo_conta boolean,
 	email varchar(50),
 	senha varchar(50),
-	data_nasc date,
-	pais varchar(50),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
 
