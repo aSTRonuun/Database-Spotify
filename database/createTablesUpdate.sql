@@ -42,6 +42,7 @@ create table musica(
 
 create table playlist(
 	id_playlist serial primary key,
+	titulo varchar(60),
 	descricao varchar(100),
 	autor varchar(50),
 	duracao_total numeric,
