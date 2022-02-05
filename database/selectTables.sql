@@ -15,6 +15,19 @@ select * from ouvinte;
 select * from playlist;
 select * from audio_playlist;
 
+/*Selects para auxiliar */
+
+	/*Select de todas as playlists a partir de um ouvinte */
+	select playlist.titulo, playlist.autor from ouvinte 
+	join biblioteca on ouvinte.id_biblioteca = biblioteca.id_biblioteca
+	join biblioteca_playlist on biblioteca.id_biblioteca = biblioteca_playlist.id_biblioteca
+	join playlist on playlist.id_playlist = biblioteca_playlist.id_playlist
+	where ouvinte.id_user = 1;
+	
+	/*Select de album por artista */
+	select artista.nome, album.titulo from album
+	join artista on album.id_artista = artista.id_artista;
+
 /* Buscar por músicas em uma playlist da biblioteca, separando elas por gênero */
 select musica.genero, count(musica), trunc(avg(musica.duracao), 2)
 from biblioteca 
@@ -55,4 +68,6 @@ FROM Ouvinte as O
 	INNER JOIN Playlist as P
 	ON BP.id_playlist = P.id_playlist
 WHERE O.id_user = 1
+
+/* Select para overview */
 
