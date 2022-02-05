@@ -37,7 +37,7 @@ WHERE exists (
 )
 
 /*  Buscar por informações de artistas com turnes depois de certa data, e com uma restrição de ouvintes */
-sselect * from artista as a
+select * from artista as a
 full outer join turne as t on a.id_artista = t.id_artista
 where exists(
 	select data from turne 
