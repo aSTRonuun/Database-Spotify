@@ -69,3 +69,5 @@ FROM Ouvinte as O
 	ON BP.id_playlist = P.id_playlist
 WHERE O.id_user = 1
 
+/* Select para overview */
+
