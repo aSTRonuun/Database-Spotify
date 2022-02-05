@@ -229,5 +229,33 @@ insert into biblioteca_album (id_album, id_biblioteca)
 values(10, 2);
 
 /* Inserir Músicas */
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Here comes the sun', 3.58, 'Pop', 1);
 
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Where Do I Go ?', 3.26, 'Pop', 2);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Getting Older', 4.04, 'Pop', 3);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Amazing Grace', 2.06, 'Clássica', 4);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('traitor', 3.49, 'Pop', 5);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Someone You Loved', 3.02, 'Pop', 6);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Watermelon Sugar', 2.54, 'Pop', 7);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Industry baby', 3.32, 'Hip-hop/Rap', 8);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Without you', 2.5, 'Pop Rock', 9);
+
+insert into musica(titulo, duracao, genero, id_album) 
+values ('Love is pain', 4.16, 'Alternativa', 10);
 
