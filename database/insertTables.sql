@@ -17,16 +17,16 @@ values ('', '', '', '', '', '', 0);
 insert into biblioteca (qtd_podcasts, qtd_playlist, qtd_albuns)
 values (0, 0 ,0);
 
-insert into ouvinte (nome, tipo_conta, email, senha, data_nasc, pais, id_biblioteca)
-values ('Vitor Alves', 'true', 'vitor@gmail.com', 'fjkdaofda', '27-03-2001', 'Kiribati', 1);
+insert into ouvinte (nome, tipo_conta, email, senha)
+values ('Vitor Alves', 'true', 'vitor@gmail.com', 'fjkdaofda');
 
 update biblioteca set id_user = 1 where id_biblioteca = 1;
 
 insert into biblioteca (qtd_podcasts, qtd_playlist, qtd_albuns)
 values (0, 0 ,0);
 
-insert into ouvinte (nome, tipo_conta, email, senha, data_nasc, pais, id_biblioteca)
-values ('Carlos Henryck', 'false', 'henryck@gmail.com', 'pfjadspoiw', '17-07-2003', 'timor-leste', 2);
+insert into ouvinte (nome, tipo_conta, email, senha)
+values ('Carlos Henryck', 'false', 'henryck@gmail.com', 'pfjadspoiw');
 
 update biblioteca set id_user = 2 where id_biblioteca = 2;
 
