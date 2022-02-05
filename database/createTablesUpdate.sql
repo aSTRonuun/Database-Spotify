@@ -98,25 +98,25 @@ alter table biblioteca add constraint fk_id_user
 foreign key(id_user) references ouvinte(id_user);
 
 create table biblioteca_playlist(
-	id_biblioteca_playlist integer primary key,
+	id_biblioteca_playlist serial primary key,
 	id_playlist integer references playlist(id_playlist),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
 
 create table biblioteca_podcast(
-	id_biblioteca_podcast integer primary key,
+	id_biblioteca_podcast serial primary key,
 	id_podcast integer references podcast(id_podcast),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
 
 create table biblioteca_album(
-	id_biblioteca_album integer primary key,
+	id_biblioteca_album serial primary key,
 	id_album integer references album(id_album),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
 
 create table biblioteca_artista(
-	id_biblioteca_artista integer primary key,
+	id_biblioteca_artista serial primary key,
 	id_artista integer references artista(id_artista),
 	id_biblioteca integer references biblioteca(id_biblioteca)
 );
