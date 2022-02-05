@@ -44,3 +44,15 @@ where exists(
 	select qtd_ouvintes from artista
 	where qtd_ouvintes > 0 and qtd_ouvintes < 200
 );
+
+/* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
+SELECT P.id_playlist, P.descricao, P.duracao_total, P.curtidas
+FROM Ouvinte as O
+	INNER JOIN Biblioteca as B
+	ON B.id_user = O.id_user
+	INNER JOIN Biblioteca_playlist as BP
+	ON B.id_biblioteca = BP.id_biblioteca
+	INNER JOIN Playlist as P
+	ON BP.id_playlist = P.id_playlist
+WHERE O.id_user = 1
+
