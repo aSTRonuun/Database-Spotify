@@ -309,7 +309,7 @@ values('4 Curiosos', 45689);
 /* Inserir Podcasters */
 insert into podcast(descricao, titulo, id_podcaster) 
 values('Lucas Silveira fala sobre ciência, 
-	   filosofia e muitas outras tantas coisas das quais ele nem sabe muito bem', 'Matéria Escura', 1);
+	filosofia e muitas outras tantas coisas das quais ele nem sabe muito bem', 'Matéria Escura', 1);
 
 insert into podcast(descricao, titulo, id_podcaster) 
 values('Três amigos se reúnem semanalmente para discutir e refletir sobre a vida', 'Uma semana na Vida', 2);
@@ -337,3 +337,68 @@ values('Sem nenhum conhecimento, mas cheio de opinião', 'MoídaCast', 9);
 
 insert into podcast(descricao, titulo, id_podcaster) 
 values('Pocast de Entretenimento', '4Curiosos Podcast', 10);
+
+/*Inserir podcasts na biblioteca */
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (1, 1);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (2, 1);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (3, 1);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (4, 1);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (5, 1);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (6, 2);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (7, 2);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (8, 2);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (9, 2);
+
+insert into biblioteca_podcast(id_podcast, id_biblioteca)
+values (10, 2);
+
+/*Inserir episódios */
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('O livro que eu recomendo é A REALIDADE OCULTA do meu mano BRIAN GREENE', 0.5, 1, 'O que teve antes do big bang ? ps: não sei');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Assuntos diversos da semana', 1, 2, 'Semana 12 - Um ciclo se fecha, outro começa');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Conversa com o produtor musical Rodrigo Castanho', 0.9, 3, 'Sobre produção com Rodrigo Castanho');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Em 1994, 60 crianças testemunharam um disco voador aterrissar no centro do pátio de uma escola em Ruwa, Zimbabwe', 
+		0.3, 4, 'Uma escola de outro mundo!');
+		
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Become a Listening Time Member and receive extra episodes, seminars, and training', 0.3, 5, 'Breakfast and Camping');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Participe do programa mandando email para:', 0.3, 6, 'O que a internet quer saber');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Convido vocês para um papo sobre fótons, neurociência e os segredos da consciência humana', 
+		0.15, 7, 'Cores, fótons e os absurdos da percepção humana');
+		
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Nesse episódio do Podcast explico o que é atenção, Déficit de Atenção e TDAH', 1, 8, 'Melhore seu foco e concentração');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('PASSADO, PRESENTE E FUTURO. O QUE VOCÊ FARIA SE PUDESSE VIAJAR ENTRE ELES?', 0.5, 9, 'O que você faria se pudesse viajar no tempo ?');
+
+insert into episodio(descricao, duracao, id_podcast, titulo)
+values ('Conversa sobre o famigerado Storytelling: a famosa expressão desnecessária em inglês TÃO aclamada para "contar histórias"', 
+		1.5, 10, 'A arte de contar histórias com Issac Ness');
