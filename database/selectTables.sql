@@ -17,13 +17,13 @@ select * from audio_playlist;
 
 /* Buscar por músicas em uma playlist da biblioteca, separando elas por gênero */
 select m.genero, count(m), trunc(avg(m.duracao), 2)
-from biblioteca as b
-inner join ouvinte as o on b.id_user = o.id_user
+from ouvinte as o
+inner join biblioteca as b on b.id_user = o.id_user
 inner join biblioteca_playlist as bp on b.id_biblioteca = bp.id_biblioteca
 inner join playlist as p on p.id_playlist = bp.id_playlist
 inner join audio_playlist as ap on ap.id_playlist = p.id_playlist
 inner join musica as m on m.id_musica = ap.id_musica
-where b.id_biblioteca = 1 and p.id_playlist = 1
+where o.id_user = 1 and p.id_playlist = 1
 group by m.genero
 having avg(m.duracao) > 2;
 
@@ -33,7 +33,7 @@ FROM Artista as A
 WHERE exists (
 	SELECT *
 	FROM Album as Al, Musica as M
-	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'pop'
+	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'Pop'
 )
 
 /*  Buscar por informações de artistas com turnes depois de certa data, e com uma restrição de ouvintes */
@@ -69,5 +69,5 @@ where exists(
 	select e.duracao from podcast
 	join episodio on p.id_podcast = e.id_podcast
 	where e.duracao > 0.5 and e.duracao <= 1
-)and b.id_biblioteca = 1;
+)and o.id_user = 1;
 
