@@ -1,18 +1,3 @@
-/* Templates */
-insert into biblioteca (qtd_podcasts, qtd_playlist, qtd_albuns)
-values (0, 0 ,0);
-
-insert into musica (titulo, duracao, genero, id_album, id_artista) 
-values ('', 0, '', 0, 0);
-
-insert into audio_playlist(id_playlist, id_musica)
-values (0, 0);
-
-insert into ouvinte (nome, tipo_conta, email, senha, data_nasc, pais, id_biblioteca)
-values ('', '', '', '', '', '', 0);
-
-
-
 /* Inserir biblioteca e ouvinte */ 
 insert into biblioteca (qtd_podcasts, qtd_playlist, qtd_albuns)
 values (0, 0 ,0);
@@ -259,3 +244,96 @@ values ('Without you', 2.5, 'Pop Rock', 9);
 insert into musica(titulo, duracao, genero, id_album) 
 values ('Love is pain', 4.16, 'Alternativa', 10);
 
+/* Inserir Turnês*/
+insert into turne (data, descricao, id_artista) 
+values('05-03-2022', 'Turne pela Europa', 1);
+
+insert into turne (data, descricao, id_artista) 
+values('18-05-2022', 'Turne em Kiribati', 2);
+
+insert into turne (data, descricao, id_artista) 
+values('26-04-2022', 'Turne em andorra', 3);
+
+insert into turne (data, descricao, id_artista) 
+values('28-02-2022', 'Turne em Bangladesh', 4);
+
+insert into turne (data, descricao, id_artista) 
+values('15-06-2022', 'Turne em Gâmbia', 5);
+
+insert into turne (data, descricao, id_artista) 
+values('28-08-2022', 'Turne em Liechtenstein', 6);
+
+insert into turne (data, descricao, id_artista) 
+values('02-09-2022', 'Turne em Quirguistão', 7);
+
+insert into turne (data, descricao, id_artista) 
+values('12-04-2022', 'Turne em Bahrein', 8);
+
+insert into turne (data, descricao, id_artista) 
+values('17-07-2022', 'Turne na Estônia', 9);
+
+insert into turne (data, descricao, id_artista) 
+values('19-06-2022', 'Turne em Vanuatu', 10);
+
+/* Inserir Podcast */
+insert into podcaster(name, qtd_ouvintes)
+values('Lucas Silveira', 10526);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Danilo Santana', 15485);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Agência de podcast', 251465);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Spotify Studios', 100235);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Conner Pe', 20651);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Half Deaf', 9485);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Ludoviajante', 30524);
+
+insert into podcaster(name, qtd_ouvintes)
+values('Andrei Mayer de Oliveira', 24568);
+
+insert into podcaster(name, qtd_ouvintes)
+values('CarneMoídaTv', 45615);
+
+insert into podcaster(name, qtd_ouvintes)
+values('4 Curiosos', 45689);
+
+/* Inserir Podcasters */
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Lucas Silveira fala sobre ciência, 
+	   filosofia e muitas outras tantas coisas das quais ele nem sabe muito bem', 'Matéria Escura', 1);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Três amigos se reúnem semanalmente para discutir e refletir sobre a vida', 'Uma semana na Vida', 2);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Processos criativos e composições', 'Sobre canções', 3);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('OVNIs, criaturas iterdimensionais... Prepare seu capacete de alumínio', 'Frequência X', 4);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('This podcast is for English learners who want to practice', 'Listening Time', 5);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Assuntos que não quisemos levar para a terapia', 'Pãodecast', 6);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Canal sobre filosofia, ciência e piadas ruins', 'Ludocast', 7);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Conteúdo neurocientífico de forma simples e fácil', 'Culpa do cérebro', 8);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Sem nenhum conhecimento, mas cheio de opinião', 'MoídaCast', 9);
+
+insert into podcast(descricao, titulo, id_podcaster) 
+values('Pocast de Entretenimento', '4Curiosos Podcast', 10);
