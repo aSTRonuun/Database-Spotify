@@ -244,6 +244,157 @@ values ('Without you', 2.5, 'Pop Rock', 9);
 insert into musica(titulo, duracao, genero, id_album) 
 values ('Love is pain', 4.16, 'Alternativa', 10);
 
+/*Inserir músicas nas playlist */
+insert into audio_playlist(id_musica, id_playlist) 
+values (1, 1);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (2, 1);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (3, 1);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (4, 1);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (5, 1);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (6, 2);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (7, 2);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (8, 2);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (9, 2);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (10, 2);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (1, 3);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (2, 3);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (3, 3);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (4, 3);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (5, 3);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (6, 4);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (7, 4);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (8, 4);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (9, 4);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (10, 4);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (1, 5);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (2, 5);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (3, 5);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (4, 5);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (5, 5);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (6, 6);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (7, 6);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (8, 6);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (9, 6);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (10, 6);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (1, 7);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (2, 7);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (3, 7);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (4, 7);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (5, 7);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (6, 8);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (7, 8);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (8, 8);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (9, 8);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (10, 8);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (1, 9);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (2, 9);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (3, 9);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (4, 9);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (5, 9);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (6, 10);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (7, 10);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (8, 10);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (9, 10);
+
+insert into audio_playlist(id_musica, id_playlist) 
+values (10, 10);
+
 /* Inserir Turnês*/
 insert into turne (data, descricao, id_artista) 
 values('05-03-2022', 'Turne pela Europa', 1);
