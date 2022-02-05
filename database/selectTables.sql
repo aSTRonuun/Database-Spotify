@@ -14,6 +14,7 @@ select * from biblioteca;
 select * from ouvinte;
 select * from playlist;
 select * from audio_playlist;
+select * from biblioteca_playlist;
 
 /* Buscar por músicas em uma playlist da biblioteca, separando elas por gênero */
 select musica.genero, count(musica), trunc(avg(musica.duracao), 2)
