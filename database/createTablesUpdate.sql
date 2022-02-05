@@ -88,8 +88,7 @@ create table ouvinte(
 	nome varchar(50),
 	tipo_conta boolean,
 	email varchar(50),
-	senha varchar(50),
-	id_biblioteca integer references biblioteca(id_biblioteca)
+	senha varchar(50)
 );
 
 alter table biblioteca add constraint fk_id_user
