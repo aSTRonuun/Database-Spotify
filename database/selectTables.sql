@@ -58,5 +58,16 @@ FROM Ouvinte as O
 	ON BP.id_playlist = P.id_playlist
 WHERE O.id_user = 1
 
-/* Select para overview */
+/* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
+select p.titulo, podcaster.name, p.descricao, podcaster.qtd_ouvintes, e.titulo, e.duracao, e.descricao from biblioteca as b 
+join ouvinte as o on o.id_user = b.id_user
+join biblioteca_podcast as bp on bp.id_biblioteca = b.id_biblioteca
+join podcast as p on p.id_podcast = bp.id_podcast
+join podcaster on podcaster.id_podcaster = p.id_podcaster
+join episodio as e on e.id_podcast = p.id_podcast
+where exists(
+	select e.duracao from podcast
+	join episodio on p.id_podcast = e.id_podcast
+	where e.duracao > 0.5 and e.duracao <= 1
+)and b.id_biblioteca = 1;
 
