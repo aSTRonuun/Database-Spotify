@@ -1,5 +1,4 @@
-import { Request, response, Response } from "express";
-import { Turne } from "../models/Turne";
+import { Request, Response } from "express";
 import { pool } from "../database";
 import { QueryResult } from "pg";
 import { Artista } from "../models/Artista";

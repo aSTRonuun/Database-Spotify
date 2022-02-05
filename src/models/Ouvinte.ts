@@ -4,9 +4,9 @@ export class Ouvinte {
     private email: string;
     private senha: string;
 
-    constructor(nome: string, tipo_conta: boolean, email: string, senha: string) {
+    constructor(nome: string, email: string, senha: string) {
         this.nome = nome;
-        this.tipo_conta = tipo_conta;
+        this.tipo_conta = false;
         this.email = email;
         this.senha = senha;
     }

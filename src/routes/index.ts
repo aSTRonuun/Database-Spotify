@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { ArtistaDAO } from "../dao/ArtistaDAO";
+import { OuvinteDAO } from "../dao/OuvinteDAO";
 import { TurneDAO } from "../dao/TurneDAO";
 const router = Router();
 
@@ -22,6 +23,17 @@ router.put("/artista/:id", new ArtistaDAO().handleUpdate);
 router.delete("/artista/:id", new ArtistaDAO().handleDelete);
 
 router.get("/artista/nome/:genero", new ArtistaDAO().getAllArtitsByMusicGenre);
+
+
+router.post("/ouvinte", new OuvinteDAO().handleCreate);
+
+router.get("/ouvinte/biblioteca/playlist/:id", new OuvinteDAO().getPlaylistsByOuvinteInYourBiblioteca);
+
+router.get("/ouvinte/:id", new OuvinteDAO().handleRead);
+
+router.put("/ouvinte/:id", new OuvinteDAO().handleUpdate);
+
+router.delete("/ouvinte/:id", new OuvinteDAO().handleDelete);
 
 
 
