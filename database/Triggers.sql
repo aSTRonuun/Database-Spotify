@@ -7,6 +7,7 @@ BEGIN
 	UPDATE biblioteca 
 	SET qtd_playlist = qtd_playlist + 1
 	WHERE id_biblioteca = NEW.id_biblioteca;
+	refresh materialized view viewPlaylist;
 	
 	RAISE NOTICE 'Playlist adicionada na biblioteca %', NEW.id_biblioteca;
 	
@@ -29,6 +30,7 @@ BEGIN
 	UPDATE biblioteca 
 	SET qtd_playlist = qtd_playlist - 1
 	WHERE id_biblioteca = OLD.id_biblioteca;
+	refresh materialized view viewPlaylist;
 	
 	RAISE NOTICE 'Playlist removida da biblioteca %', OLD.id_biblioteca;
 	
