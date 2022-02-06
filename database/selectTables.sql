@@ -48,7 +48,7 @@ where exists(
 );
 
 /* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
-create materialized view viewPlaylist01 as
+create materialized view viewPlaylist as
 (SELECT O.id_user, P.id_playlist, P.descricao, P.duracao_total, P.curtidas
 FROM Ouvinte as O
 	INNER JOIN Biblioteca as B
