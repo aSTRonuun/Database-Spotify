@@ -72,3 +72,10 @@ where exists(
 	where e.duracao > 0.5 and e.duracao <= 1
 ));
 
+/*Ver álbuns de artista da biblioteca de um ouvinte */
+select ar.nome, a.titulo, a.qtd_musica, a.duracao_total from ouvinte as o 
+join biblioteca as b on b.id_user = o.id_user
+join biblioteca_album as ba on ba.id_biblioteca = b.id_biblioteca
+join album as a on a.id_album = ba.id_album
+join artista as ar on ar.id_artista = a.id_artista;
+
