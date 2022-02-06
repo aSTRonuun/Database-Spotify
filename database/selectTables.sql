@@ -80,5 +80,5 @@ join album as a on a.id_album = ba.id_album
 join artista as ar on ar.id_artista = a.id_artista
 where exists(
 	select a.qtd_musica from album
-	where a.qtd_musica > 0 and a.qtd_musica <= 2
+	where a.qtd_musica = 1
 );
