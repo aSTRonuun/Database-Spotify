@@ -85,24 +85,52 @@ export class OuvinteDAO {
         }
     }
 
-    async getPlaylistsByOuvinteInYourBiblioteca(req: Request, resp: Response) {
+    async getViewPlaylist(req: Request, resp: Response) {
         const { id } = req.params;
 
-        const response: QueryResult = await pool.query(`
-            SELECT P.id_playlist, P.descricao, P.duracao_total, P.curtidas
-            FROM Ouvinte as O
-                INNER JOIN Biblioteca as B
-                ON B.id_user = O.id_user
-                INNER JOIN Biblioteca_playlist as BP
-                ON B.id_biblioteca = BP.id_biblioteca
-                INNER JOIN Playlist as P
-                ON BP.id_playlist = P.id_playlist
-            WHERE O.id_user = $1
-        `, [id]);
+        const response: QueryResult = await pool.query("SELECT * FROM viewPlaylist WHERE id_user = $1", [id]);
         if(response.rowCount > 0) {
             return resp.status(200).json(response.rows);
         }else{
-            return resp.json({message: "Não há playlists na sua biblioteca"});
+            return resp.status(404).json({ message: "Nenhuma playlist encontrada" });
+        }
+    }
+
+    async getViewPodcasts(req: Request, resp: Response) {
+        const { id } = req.params;
+
+        const response: QueryResult = await pool.query("SELECT * FROM viewPodcast WHERE id_user = $1", [id]);
+        if(response.rowCount > 0) {
+            return resp.status(200).json(response.rows);
+        }else {
+            return resp.status(404).json({
+                message: "Nenhum podcast encontrado"
+            })
+        }
+    }
+
+    async getMusicasByOuvinteByBibliotecaByPlaylist(req: Request, resp: Response) {
+        const { id, id_playlist } = req.params;
+
+        const response: QueryResult = await pool.query(`
+            select m.genero, count(m), trunc(avg(m.duracao), 2)
+            from ouvinte as o
+            inner join biblioteca as b on b.id_user = o.id_user
+            inner join biblioteca_playlist as bp on b.id_biblioteca = bp.id_biblioteca
+            inner join playlist as p on p.id_playlist = bp.id_playlist
+            inner join audio_playlist as ap on ap.id_playlist = p.id_playlist
+            inner join musica as m on m.id_musica = ap.id_musica
+            where o.id_user = $1 and p.id_playlist = $2
+            group by m.genero
+            having avg(m.duracao) > 2
+        `, [id, id_playlist]);
+
+        if(response.rowCount > 0) {
+            return resp.status(200).json(response.rows);
+        }else {
+            return resp.status(404).json({
+                message: "Não há músicas com mais de 2 minutos de duração"
+            })
         }
     }
 

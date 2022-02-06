@@ -92,4 +92,28 @@ export class ArtistaDAO {
             });
         }
     }
+
+    async getArtistsByDateTurne(req: Request, resp: Response) {
+        const { data } = req.params;
+
+        const response: QueryResult = await pool.query(`
+            select * from artista as a
+            full outer join turne as t on a.id_artista = t.id_artista
+            where exists(
+                select data from turne 
+                where data > '$1'
+            ) and a.qtd_ouvintes = any(
+                select qtd_ouvintes from artista
+                where qtd_ouvintes > 10000 and qtd_ouvintes < 8000000
+            )
+        `, [data]);
+
+        if(response.rowCount > 0) {
+            return resp.status(200).json(response.rows);
+        }else {
+            return resp.status(404).json({
+                message: "Nenhum artista encontrado com essa data"
+            })
+        }
+    }
 }
