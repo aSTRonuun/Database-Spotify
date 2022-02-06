@@ -61,7 +61,7 @@ WHERE O.id_user = 1) with data;
 
 /* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
 create view viewPodcasts as 
-(select p.podcastName, podcaster.name, p.podcastDescription, podcaster.qtd_ouvintes, e.titulo, e.duracao, e.descricao from biblioteca as b 
+(select o.id_user, p.podcastName, podcaster.name, p.podcastDescription, podcaster.qtd_ouvintes, e.titulo, e.duracao, e.descricao from biblioteca as b 
 join ouvinte as o on o.id_user = b.id_user
 join biblioteca_podcast as bp on bp.id_biblioteca = b.id_biblioteca
 join podcast as p on p.id_podcast = bp.id_podcast
@@ -71,5 +71,5 @@ where exists(
 	select e.duracao from podcast
 	join episodio on p.id_podcast = e.id_podcast
 	where e.duracao > 0.5 and e.duracao <= 1
-)and o.id_user = 1);
+));
 
