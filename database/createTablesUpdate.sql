@@ -66,8 +66,8 @@ create table podcaster(
 
 create table podcast(
 	id_podcast serial primary key,
-	descricao varchar(150),
-	titulo varchar(50),
+	podcastDescription varchar(150),
+	podcastName varchar(50),
 	id_podcaster integer references podcaster(id_podcaster)
 );
 
