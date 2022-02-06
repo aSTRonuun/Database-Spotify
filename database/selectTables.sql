@@ -48,16 +48,15 @@ where exists(
 );
 
 /* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
-create materialized view viewPlaylist as
-(SELECT P.id_playlist, P.descricao, P.duracao_total, P.curtidas
+create materialized view viewPlaylist01 as
+(SELECT O.id_user, P.id_playlist, P.descricao, P.duracao_total, P.curtidas
 FROM Ouvinte as O
 	INNER JOIN Biblioteca as B
 	ON B.id_user = O.id_user
 	INNER JOIN Biblioteca_playlist as BP
 	ON B.id_biblioteca = BP.id_biblioteca
 	INNER JOIN Playlist as P
-	ON BP.id_playlist = P.id_playlist
-WHERE O.id_user = 1) with data;
+	ON BP.id_playlist = P.id_playlist) with data;
 
 /* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
 create view viewPodcasts as 
