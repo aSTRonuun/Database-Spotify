@@ -198,7 +198,7 @@ values
 ('4 Curiosos', 45689);
 
 /* Inserir Podcasters */
-insert into podcast(descricao, titulo, id_podcaster) 
+insert into podcast(podcastdescription, podcastname, id_podcaster) 
 values
 ('Lucas Silveira fala sobre ciência, filosofia e muitas outras tantas coisas das quais ele nem sabe muito bem', 'Matéria Escura', 1),
 ('Três amigos se reúnem semanalmente para discutir e refletir sobre a vida', 'Uma semana na Vida', 2), 
