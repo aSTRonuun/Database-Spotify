@@ -234,7 +234,7 @@ values
 ('Em 1994, 60 crianças testemunharam um disco voador aterrissar no centro do pátio de uma escola em Ruwa, Zimbabwe', 
 		0.3, 4, 'Uma escola de outro mundo!'),
 ('Become a Listening Time Member and receive extra episodes, seminars, and training', 0.3, 5, 'Breakfast and Camping'),
-('Participe do programa mandando email para:', 0.3, 6, 'O que a internet quer saber')
+('Participe do programa mandando email para:', 0.3, 6, 'O que a internet quer saber'),
 ('Convido vocês para um papo sobre fótons, neurociência e os segredos da consciência humana', 
 		0.15, 7, 'Cores, fótons e os absurdos da percepção humana'),
 ('Nesse episódio do Podcast explico o que é atenção, Déficit de Atenção e TDAH', 1, 8, 'Melhore seu foco e concentração'),
