@@ -27,15 +27,6 @@ where o.id_user = 1 and p.id_playlist = 1
 group by m.genero
 having avg(m.duracao) > 2;
 
-/*  Buscar por nomes artistas com musicas de um determinado genero */
-SELECT A.nome
-FROM Artista as A
-WHERE exists (
-	SELECT *
-	FROM Album as Al, Musica as M
-	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'Pop'
-)
-
 /*  Buscar por informações de artistas com turnes depois de certa data, e com uma restrição de ouvintes */
 select * from artista as a
 full outer join turne as t on a.id_artista = t.id_artista
@@ -47,16 +38,6 @@ where exists(
 	where qtd_ouvintes > 10000 and qtd_ouvintes < 8000000
 );
 
-/* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
-create materialized view viewPlaylist as
-(SELECT O.id_user, P.id_playlist, P.descricao, P.duracao_total, P.curtidas
-FROM Ouvinte as O
-	INNER JOIN Biblioteca as B
-	ON B.id_user = O.id_user
-	INNER JOIN Biblioteca_playlist as BP
-	ON B.id_biblioteca = BP.id_biblioteca
-	INNER JOIN Playlist as P
-	ON BP.id_playlist = P.id_playlist) with data;
 
 /* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
 create view viewPodcasts as 
@@ -82,3 +63,23 @@ where exists(
 	select a.qtd_musica from album
 	where a.qtd_musica = 1
 );
+
+/*  Buscar por nomes artistas com musicas de um determinado genero */
+SELECT A.nome
+FROM Artista as A
+WHERE exists (
+	SELECT *
+	FROM Album as Al, Musica as M
+	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'Pop'
+)
+
+/* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
+create materialized view viewPlaylist as
+(SELECT O.id_user, P.id_playlist, P.descricao, P.duracao_total, P.curtidas
+FROM Ouvinte as O
+	INNER JOIN Biblioteca as B
+	ON B.id_user = O.id_user
+	INNER JOIN Biblioteca_playlist as BP
+	ON B.id_biblioteca = BP.id_biblioteca
+	INNER JOIN Playlist as P
+	ON BP.id_playlist = P.id_playlist) with data;

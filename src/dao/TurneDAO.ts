@@ -5,7 +5,8 @@ import { QueryResult } from "pg";
 
 
 export class TurneDAO {
-    async handleCreate(req: Request, res: Response){
+
+    async handleCreate(req: Request, res: Response): Promise<void> {
         const { data, descricao, idArtista } = req.body;
 
         const turne = new Turne(data, descricao, idArtista);
@@ -21,7 +22,9 @@ export class TurneDAO {
                 idArtista
             }
         });
-    }
+
+        return;
+    } 
 
     async handleUpdate(req: Request, res: Response) {
         const { id } = req.params;

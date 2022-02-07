@@ -27,6 +27,7 @@ class TurneDAO {
                     idArtista
                 }
             });
+            return;
         });
     }
     handleUpdate(req, res) {

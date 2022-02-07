@@ -99,7 +99,7 @@ export class OuvinteDAO {
     async getViewPodcasts(req: Request, resp: Response) {
         const { id } = req.params;
 
-        const response: QueryResult = await pool.query("SELECT * FROM viewPodcast WHERE id_user = $1", [id]);
+        const response: QueryResult = await pool.query("SELECT * FROM viewPodcasts WHERE id_user = $1", [id]);
         if(response.rowCount > 0) {
             return resp.status(200).json(response.rows);
         }else {
@@ -130,6 +130,30 @@ export class OuvinteDAO {
         }else {
             return resp.status(404).json({
                 message: "Não há músicas com mais de 2 minutos de duração"
+            })
+        }
+    }
+    
+    async getSinglesByOuvinteByBiblioteca(req: Request, resp: Response) {
+        const { id } = req.params;
+
+        const response: QueryResult = await pool.query(`
+            select ar.nome, a.titulo, a.qtd_musica, a.duracao_total from ouvinte as o 
+            join biblioteca as b on b.id_user = o.id_user
+            join biblioteca_album as ba on ba.id_biblioteca = b.id_biblioteca
+            join album as a on a.id_album = ba.id_album
+            join artista as ar on ar.id_artista = a.id_artista
+            where exists(
+                select a.qtd_musica from album
+                where a.qtd_musica = 1
+            );
+        `)
+
+        if(response.rowCount > 0) {
+            return resp.status(200).json(response.rows);
+        }else {
+            return resp.status(404).json({
+                message: "Não há singles"
             })
         }
     }
