@@ -63,15 +63,15 @@ class ArtistaDAO {
     }
     handleDelete(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { idArtista } = req.params;
-            const response = yield database_1.pool.query("DELETE FROM Artista WHERE id_artista = $1", [idArtista]);
+            const { id } = req.params;
+            const response = yield database_1.pool.query("DELETE FROM Artista WHERE id_artista = $1", [id]);
             if (response.rowCount > 0) {
-                resp.json({
+                resp.status(200).json({
                     message: "Artista deleted successfully",
                 });
             }
             else {
-                resp.json({
+                resp.status(404).json({
                     message: "Artista not found",
                 });
             }

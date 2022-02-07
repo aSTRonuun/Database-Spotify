@@ -68,6 +68,8 @@ where exists(
 
 
 
+
+
 /*  Buscar por nomes artistas com musicas de um determinado genero */
 SELECT A.nome
 FROM Artista as A

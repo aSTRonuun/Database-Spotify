@@ -57,15 +57,15 @@ export class ArtistaDAO {
     }
 
     async handleDelete(req: Request, resp: Response) {
-        const { idArtista } = req.params;
+        const { id } = req.params;
 
-        const response: QueryResult = await pool.query("DELETE FROM Artista WHERE id_artista = $1", [idArtista]);
+        const response: QueryResult = await pool.query("DELETE FROM Artista WHERE id_artista = $1", [id]);
         if(response.rowCount > 0) {
-            resp.json({
+            resp.status(200).json({
                 message: "Artista deleted successfully",
             })
         }else {
-            resp.json({
+            resp.status(404).json({
                 message: "Artista not found",
             })
         }
