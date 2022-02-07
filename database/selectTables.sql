@@ -64,6 +64,10 @@ where exists(
 	where a.qtd_musica = 1
 );
 
+
+
+
+
 /*  Buscar por nomes artistas com musicas de um determinado genero */
 SELECT A.nome
 FROM Artista as A

@@ -60,6 +60,8 @@ BEFORE INSERT ON audio_playlist
 FOR EACH ROW
 EXECUTE PROCEDURE verificaPlaylist();
 
+
+
 /*Tigger para atualizar a quantidade de playlist quando uma playlist for adicionada em uma biblioteca*/
 CREATE OR REPLACE FUNCTION att_qtd_playlist_insert_in_lib()
 RETURNS TRIGGER
