@@ -15,7 +15,7 @@ select * from ouvinte;
 select * from playlist;
 select * from audio_playlist;
 
-/* Buscar por músicas em uma playlist da biblioteca, separando elas por gênero */
+/* Buscar por músicas em uma playlist da biblioteca de um ouvinte, separando elas por gênero */
 select m.genero, count(m), trunc(avg(m.duracao), 2)
 from ouvinte as o
 inner join biblioteca as b on b.id_user = o.id_user
@@ -39,7 +39,7 @@ where exists(
 );
 
 
-/* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
+/* Selecionar os podcasts de um usuário e seus respectivos episodios */
 create view viewPodcasts as 
 (select o.id_user, p.podcastName, podcaster.name, p.podcastDescription, podcaster.qtd_ouvintes, e.titulo, e.duracao, e.descricao from biblioteca as b 
 join ouvinte as o on o.id_user = b.id_user
@@ -53,7 +53,9 @@ where exists(
 	where e.duracao > 0.5 and e.duracao <= 1
 ));
 
-/*Ver álbuns de artista da biblioteca de um ouvinte */
+select * from viewPodcasts where id_user = 1;
+
+/*Ver álbuns singles de artista que estão biblioteca de um ouvinte */
 select ar.nome, a.titulo, a.qtd_musica, a.duracao_total from ouvinte as o 
 join biblioteca as b on b.id_user = o.id_user
 join biblioteca_album as ba on ba.id_biblioteca = b.id_biblioteca
