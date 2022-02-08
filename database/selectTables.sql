@@ -39,6 +39,29 @@ where exists(
 );
 
 
+
+/*Ver álbuns de artista da biblioteca de um ouvinte */
+select ar.nome, a.titulo, a.qtd_musica, a.duracao_total from ouvinte as o 
+join biblioteca as b on b.id_user = o.id_user
+join biblioteca_album as ba on ba.id_biblioteca = b.id_biblioteca
+join album as a on a.id_album = ba.id_album
+join artista as ar on ar.id_artista = a.id_artista
+where exists(
+	select a.qtd_musica from album
+	where a.qtd_musica = 1
+);
+
+/*  Buscar por nomes artistas com musicas de um determinado genero */
+SELECT A.nome
+FROM Artista as A
+WHERE exists (
+	SELECT *
+	FROM Album as Al, Musica as M
+	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'Pop'
+)
+
+
+
 /* Selecionar os podcasts e seus respectivos episodios de uma biblioteca */
 create view viewPodcasts as 
 (select o.id_user, p.podcastName, podcaster.name, p.podcastDescription, podcaster.qtd_ouvintes, e.titulo, e.duracao, e.descricao from biblioteca as b 
@@ -53,31 +76,6 @@ where exists(
 	where e.duracao > 0.5 and e.duracao <= 1
 ));
 
-/*Ver álbuns de artista da biblioteca de um ouvinte */
-select ar.nome, a.titulo, a.qtd_musica, a.duracao_total from ouvinte as o 
-join biblioteca as b on b.id_user = o.id_user
-join biblioteca_album as ba on ba.id_biblioteca = b.id_biblioteca
-join album as a on a.id_album = ba.id_album
-join artista as ar on ar.id_artista = a.id_artista
-where exists(
-	select a.qtd_musica from album
-	where a.qtd_musica = 1
-);
-
-
-
-
-
-
-
-/*  Buscar por nomes artistas com musicas de um determinado genero */
-SELECT A.nome
-FROM Artista as A
-WHERE exists (
-	SELECT *
-	FROM Album as Al, Musica as M
-	WHERE A.id_artista = Al.id_artista and Al.id_album = M.id_album and M.genero = 'Pop'
-)
 
 /* Dado um ouvinte, buscar por todas as playlists que estao em sua biblioteca */
 create materialized view viewPlaylist as
